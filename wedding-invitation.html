@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="HandheldFriendly" content="true" />
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>김민성 ❤ 손지민 결혼합니다</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Parisienne&display=swap');
+    @import url('https://fonts.cdnfonts.com/css/francisco');
+    @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200;400&family=Gowun+Batang&family=Parisienne&display=swap');
+    @font-face {
+        font-family: 'GyeonggiBatang';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Chosunilbo_myungjo';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'GowunBatang-Regular';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    :root { scroll-behavior :smooth; }
+    body {touch-action: pan-y;font-size: 4vw;line-height: 0;box-sizing: border-box;}
+    body, div, img, span, p {margin:0;padding:0;font-family: 'Chosunilbo_myungjo';text-align: center;-webkit-font-smoothing: antialiased;box-sizing: border-box;}
+    .flex_layout {display: flex;justify-content: center;margin-left: auto;margin-right: auto;background: #333;}
+    .layout__ {position: relative;max-width: 430px;width: 100vw;background: #fff;}
+    .container {max-width: 100vw;}
+    .header {position: relative;background:#fff;height:100vh;/*display: grid;grid-template-rows: 1fr auto;*/overflow: hidden;max-height: 735px;}
+    
+    
+    .header {
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+    }
+    
+    .header .text {z-index:1;display: flex;align-items: center;justify-content: flex-start;flex-direction: column;padding: clamp(20px, 12vw, 60px) 0 0;background: linear-gradient(0deg, transparent, rgba(220,227,234,0.8));position: absolute;width: 100vw;height: 7vh;max-width: 430px;}
+    .header .text p {font-family: 'GyeonggiBatang';font-size: 1rem;line-height:1.5rem;position: relative;animation: fadeInUp 1s;animation-fill-mode: forwards;animation-delay: 0.5s;opacity: 0;}
+    .header .text p:first-child {animation-delay: 0s;}
+    .header .img_top {position: absolute;top: 0;}
+    .header .img_top > img {width:100%;}
+    .header .main_img > img {width:100%;height: 100%;}
+    .main_img {position: relative;}
+    .place_info {padding:35px 0 65px;background: #fff;color:#333;}
+    .place_info > p {font-size: 1rem;line-height: 2em;font-family: 'Noto Serif KR';}
+    .place_info > .name {font-family: 'Francisco';font-size: 1.9rem;margin-bottom:15px;}
+    .greeting_wrap .inner {background: #fbfbfd;background-image:url(./resource/images/patterns.png);padding:50px 0;}
+    .greeting_wrap h3 {font-family: 'GyeonggiBatang';font-size: 1.1rem;line-height: 1.1rem;font-weight: 100;margin: 50px 0 20px;color:#333;}
+    .greeting_wrap .tt {font-size: 0.9rem;color: #8A92B3;font-family: 'GowunBatang-Regular';line-height: 2.5em;border-bottom: 1px solid rgba(138,146,179,0.15);}
+    .intrd_area > div:not(.icon) {display: inline-flex;flex-direction: column;}
+    .intrd_area .icon {background: url(./resource/images/icon.svg) no-repeat 50% 50%;width: 20px;height: 36px;background-size: 20px auto;position: relative;margin: 0 auto;
+        filter: invert(64%) sepia(10%) saturate(813%) hue-rotate(191deg) brightness(89%) contrast(95%);margin-bottom: 20px;}
+    .greeting_wrap .invitation {font-size: 0.9rem;line-height: 2em;color:#333;}
+    .greeting_wrap .wave_container {top: -50px;height: 70px;}
+    .greeting_wrap .parallax use {animation: none;}
+    .wave_container {position: absolute;bottom: 0;z-index: 2;width: 100vw;max-width: 430px;}
+    .waves {position: relative;width: 100%;height: 50px;min-height: 40px;max-height: 50px;}
+    /* Animation */
+    .parallax > use {animation: move-forever 25s cubic-bezier(0.55,.5,0.45,.5) infinite;}
+    .parallax > use:nth-child(1) {animation-delay: -2s;animation-duration: 7s;}
+    .parallax > use:nth-child(2) {animation-delay: -3s;animation-duration: 10s;}
+    .parallax > use:nth-child(3) {animation-delay: -4s;animation-duration: 13s;}
+    .parallax > use:nth-child(4) {animation-delay: -5s;animation-duration: 20s;}
+    @keyframes move-forever {
+        0% {
+            transform: translate3d(-90px, 0, 0);
+        }
+        100% {
+            transform: translate3d(85px, 0, 0);
+        }
+    }
+    /*Shrinking for mobile*/
+    /* @media(max-width: 430px) {
+        .waves {
+            height: 50px;
+            min-height: 40px;
+            margin-bottom: 20px;
+        }
+    } */
+    @media (min-width: 280px), (max-width: 319px) and (orientation: portrait) {
+        .header .img {display: flex;justify-content: center;}
+        /* .header .img > img {width:115%;} */
+    }
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 100%, 0);
+        }
+        to {
+            opacity: 1;
+            transform: translateZ(0);
+        }
+    }
+    @media (horizontal-viewport-segments: 2) {
+        /* 가로보기일 경우 */
+        body {
+            background-color: green;
+        }
+    }
+    @media (vertical-viewport-segments: 2) {
+        /* 세로보기일 경우 */
+        body {
+            background-color: blue;
+        }
+    }
+    .area {opacity: 0;}
+    .area.view{animation: fadeInUp 1s;animation-fill-mode: forwards;animation-delay: 0s;}
+    .moving{position: absolute;top: 0;width: 100%;height: 100%;}
+    .moving.heart2{animation: heart2 20s linear infinite;background-image: url(./resource/images/heart2.png),url(./resource/images/heart3.png);pointer-events: none;background-size: cover;}
+
+    @keyframes flower3 {
+        0%{background-position:0 0,0 0,0 0;}
+        50%{background-position:500px 500px,100px 200px,-100px 140px;}
+        to{background-position:1000px 1000px,200px 300px,-200px 300px;}
+    }
+    @keyframes heart2 {
+        0%{background-position:0 0,0 0,0 0;}
+        50%{background-position:500px 500px,100px 200px,-100px 140px;}
+        to{background-position:1000px 1000px,200px 300px,-200px 300px;}
+    }
+
+.img_wrap, .img_wrap img {width: 100%;box-sizing: border-box;}
+
+.info_wrap {padding:50px 0;display: flex;flex-direction: column;align-items: center;}
+.info_box {font-size: 1.1rem;line-height:1.1rem;display: flex;align-items: center;justify-content: center;white-space: pre;margin-bottom: 15px;color:#666;}
+.info_box span {color:#333;}
+.info_box em {font-style: normal;font-size: 0.8rem;padding:0 10px;color:#666;}
+.info_box.bride em {padding: 0 15px;}
+.info_box.bride {margin-bottom: 0;}
+.info_box .mobile {display: inline-block;width: 15px;height: 15px;background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' fill='none' viewBox='0 0 24 24'%3E%3Cpath fill='%231C274C' d='m14.556 15.548-.455.48s-1.083 1.139-4.038-1.972c-2.955-3.111-1.872-4.25-1.872-4.25l.287-.303c.706-.744.773-1.938.156-2.81L7.374 4.91C6.61 3.83 5.135 3.688 4.26 4.609L2.691 6.26c-.433.457-.723 1.048-.688 1.705.09 1.68.808 5.293 4.812 9.51 4.247 4.47 8.232 4.648 9.861 4.487.516-.05.964-.329 1.325-.709l1.42-1.496c.96-1.01.69-2.74-.538-3.446l-1.91-1.1c-.806-.463-1.787-.327-2.417.336Z' opacity='.5'/%3E%3C/svg%3E");}
+
+.calendar_wrap {padding:60px 0;background: #fbfbfd;}
+.area h4 {font-family: 'Parisienne';font-size: 1rem;line-height:1rem;margin: 0 0 15px;color: #8A92B3;font-weight: 400;letter-spacing: 0.15rem;}
+/* .calendar_wrap h4 {background: url(./resource/images/weddingRing.svg) no-repeat 50% 50%;width: 40px;height: 36px;background-size: 40px auto;position: relative;margin: 0 auto;
+        filter: invert(64%) sepia(10%) saturate(813%) hue-rotate(191deg) brightness(89%) contrast(95%);} */
+.calendar_wrap .title .month {font-family: 'Crimson Pro';font-size: 1.5rem;line-height:2.2rem;font-weight: 200;color:#333;}
+.calendar_wrap .title .place {font-size: 1rem;line-height:1.2rem;color:#666;}
+.calendar_wrap .datetime {display: inline-block;font-size: 1rem;line-height: 1.7rem;padding: 16px 30px;margin-top: 1rem;letter-spacing: 1px;border-radius: 8px}
+.calendar_wrap .hours {margin-bottom: 1.25rem;letter-spacing: 1px;font-size: .9rem;line-height:1rem;}
+.dday_wrap {letter-spacing: -.5px;border-left: 0;border-right: 0;font-size: .9rem}
+.dday_wrap .highlight {color: #ea7664;font-weight: bold;}
+.dday_wrap .countdown {font-family: 'Crimson Pro';margin: 0 0 10px}
+.dday_wrap .countdown > div {display: inline-block;vertical-align: top;font-size: 10px;letter-spacing: 0;line-height: 1rem;text-transform: uppercase;}
+.dday_wrap .countdown > div > span {padding: 0 2px;text-align: center;line-height: 1.8rem;}
+.dday_wrap .countdown .myDay {color: #333;font-size: 1.5rem;font-family: 'Crimson Pro';}
+.dday_wrap .countdown .desc {color: #333;opacity: .4;}
+.dday_wrap .myDay_count {margin-top:10px;line-height: 1.2rem;font-size: 1rem;}
+.c_calendar {padding: 0 10px;margin: 2rem 3rem;border: 1px solid rgba(138,146,179,0.15);border-left: 0;border-right: 0}
+.c_calendar_table {padding: 1.5rem 0;width: 100%;}
+.c_calendar_table > tbody tr td:first-child,.c_calendar_table>thead tr th:first-child {color: #d099a1;}
+.c_calendar_eday > div {background: var(--icon-color)}
+.c_calendar_eday > .c_calendar_holiday {opacity: .3}
+.c_calendar_table > thead tr th {padding-bottom: 8px;font-size: 1rem;line-height:1rem;font-family: 'GyeonggiBatang';font-weight: normal;color:#333;}
+.c_calendar_table > tbody tr td {font-size: 1rem;line-height:2rem;font-family: 'GyeonggiBatang';font-weight: normal;color:#333;}
+.c_calendar tr {display: grid;grid-template-columns: repeat(7, 1fr);gap: 10px;margin-bottom: 10px;}
+#app .c_calendar_table {line-height: 1.8rem}
+.calendar_wrap .my_wedding_day {background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='enable-background:new 0 0 300 257' viewBox='0 0 300 257'%3E%3Cpath d='M279.65 145.59C261.06 174.73 204.45 233.15 150 257 95.55 233.15 38.94 174.73 20.35 145.59 6.41 123.73-1.26 100.47.17 74.61c1.25-22.47 12.64-44.19 30.46-58.02C48.45 2.77 72.39-2.92 94.55 1.44c23.64 4.64 44.64 20.82 55.46 42.22 10.82-21.4 31.81-37.58 55.46-42.22 22.15-4.36 46.09 1.33 63.91 15.15 17.82 13.83 29.21 35.55 30.46 58.02 1.42 25.86-6.25 49.12-20.19 70.98z' style='fill:%23ea7664'/%3E%3C/svg%3E") no-repeat 50% -1px;background-size: 100% 100%;color: #fff;font-weight: 700;}
+
+
+.gallery_wrap {padding:60px 0; background: #fff;}
+.gallery_wrap .gallery_inner {}
+.gallery_wrap .gallery_inner > ul {}
+.gallery_wrap .gallery_inner > ul > li {border-radius: 5px;}
+
+.layer_pop {display: none;position: fixed;top: 0;left: 0;right:0;bottom:0;background:rgba(0,0,0,0.2);z-index:2;}
+.call_pop .pop_inner {position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);background: #fff;z-index: 3;max-width: 300px;width: 100%;border-radius: 10px;}
+.pop_header {position: relative;background: #c7cce1;padding: 15px;border-radius: 10px 10px 0 0;}
+.pop_header .close_btn {position: absolute;width: 20px;height: 20px;right: 15px;background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m18 18-6-6m0 0L6 6m6 6 6-6m-6 6-6 6'/%3E%3C/svg%3E");}
+</style>
+<body>
+    <div class="flex_layout">
+        <div class="layout__">
+            <div class="container">
+                <div class="header">
+                    <div class="moving heart2"></div>
+                    <div class="text">
+                        <p>우리 인생에서</p>
+                        <p>가장 아름다운 순간</p>
+                    </div>
+                    <div class="img main_img">
+                        <img src="./resource/images/main_.jpg" alt="민성지민">
+                        <!--Waves Container-->
+                        <div class="wave_container">
+                            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                                <defs>
+                                    <path id="gentle-wave"
+                                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                                </defs>
+                                <g class="parallax">
+                                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                                </g>
+                            </svg>
+                        </div>
+                        <!--Waves end-->
+                        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+                        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                        <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                    </div>
+                </div>
+                <div class="place_info area">
+                    <p class="name">Minseong and Jimin</p>
+                    <p class="area">2024년 2월 3일 토요일 낮 12시<br>더아리엘 6층 스카이가든홀</p>
+                </div>
+                <div class="greeting_wrap area area_wrap">
+                    <div class="wave_container">
+                        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                            <defs>
+                                <path id="gentle-wave"
+                                    d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                            </defs>
+                            <g class="parallax">
+                                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgb(251, 251, 253)" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="inner intrd_area">
+                        <div class="icon area"></div>
+                        <div class="area">
+                            <span class="tt">장담하건대, 세상이 다 겨울이어도</span>
+                            <span class="tt">우리 사랑은 늘 봄처럼 따뜻하고</span>
+                            <span class="tt">간혹, 여름처럼 뜨거울 겁니다.</span>
+                            <span class="tt">- 이수동, &lt;사랑가&gt; -</span>
+                        </div>
+                        <div class="area">
+                            <h3>소중한 분들을 초대합니다.</h3>
+                            <p class="invitation">서로가 마주 보며 키워온 사랑으로<br>
+                                이제 한 곳을 바라보며<br>
+                                평생을 함께 걸어가려 합니다.<br>
+                                저희 두 사람의 새로운 시작을 축복해 주시면<br>
+                                더 없는 기쁨으로 간직하겠습니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="img_wrap area">
+                    <img src="/resource/images/img1.jpg" alt="지민민성">
+                </div>
+                <div class="info_wrap area">
+                    <!-- 신랑 -->
+                    <div class="info_box"><span>김종찬</span> · <span>정지윤</span><em>아들</em><span>민성</span></div>
+                    <!-- 신부 -->
+                    <div class="info_box bride"><span>손치수</span> · <span>유명원</span><em>딸</em><span>지민</span></div>
+                </div>
+                <div class="calendar_wrap area">
+                    <h4>Calendar</h4>
+                    <div class="calendar_inner">
+                        <div class="title">
+                            <div class="month">2024. 2. 3</div>
+                            <div class="place">토요일 낮 12시</div>
+                        </div>
+                        <div class="c_calendar area">
+                            <table cellspacing="0" class="c_calendar_table">
+                                <thead>
+                                    <tr>
+                                        <th>일</th>
+                                        <th>월</th>
+                                        <th>화</th>
+                                        <th>수</th>
+                                        <th>목</th>
+                                        <th>금</th>
+                                        <th>토</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="area">
+                                        <td><span></span></td>
+                                        <td><span></span></td>
+                                        <td><span></span></td>
+                                        <td><span></span></td>
+                                        <td><span>1</span></td>
+                                        <td><span>2</span></td>
+                                        <td class="my_wedding_day"><span>3</span></td>
+                                    </tr>
+                                    <tr class="area">
+                                        <td><span>4</span></td>
+                                        <td><span>5</span></td>
+                                        <td><span>6</span></td>
+                                        <td><span>7</span></td>
+                                        <td><span>8</span></td>
+                                        <td><span>9</span></td>
+                                        <td><span>10</span></td>
+                                    </tr>
+                                    <tr class="area">
+                                        <td><span>11</span></td>
+                                        <td><span>12</span></td>
+                                        <td><span>13</span></td>
+                                        <td><span>14</span></td>
+                                        <td><span>15</span></td>
+                                        <td><span>16</span></td>
+                                        <td><span>17</span></td>
+                                    </tr>
+                                    <tr class="area">
+                                        <td><span>18</span></td>
+                                        <td><span>19</span></td>
+                                        <td><span>20</span></td>
+                                        <td><span>21</span></td>
+                                        <td><span>22</span></td>
+                                        <td><span>23</span></td>
+                                        <td><span>24</span></td>
+                                    </tr>
+                                    <tr class="area">
+                                        <td><span>25</span></td>
+                                        <td><span>26</span></td>
+                                        <td><span>27</span></td>
+                                        <td><span>28</span></td>
+                                        <td><span>29</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="dday_wrap area">
+                            <div class="countdown">
+                                <div>
+                                    <div class="desc">Days</div><span class="myDay days"></span>
+                                </div>
+                                <div>
+                                    <div class="desc">&nbsp;</div><span>:</span>
+                                </div>
+                                <div>
+                                    <div class="desc">Hour</div><span class="myDay hour"></span>
+                                </div>
+                                <div>
+                                    <div class="desc">&nbsp;</div><span>:</span>
+                                </div>
+                                <div>
+                                    <div class="desc">Min</div><span class="myDay min"></span>
+                                </div>
+                                <div>
+                                    <div class="desc">&nbsp;</div><span>:</span>
+                                </div>
+                                <div>
+                                    <div class="desc">Sec</div><span class="myDay sec"></span>
+                                </div>
+                            </div>
+                            <div class="myDay_count">
+                                민성 <span class="highlight">♥</span> 지민의 결혼식이
+                                <span><span class="highlight"><span class="myDay"></span>일</span> <span>남았습니다.</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery_wrap area">
+                    <h4>Gallery</h4>
+                    <div class="gallery_inner">
+                        <ul>
+                            <li><img src="./resource/images/gallery_01.jpg"></li>
+                            <li><img src="./resource/images/gallery_02.jpg"></li>
+                            <li><img src="./resource/images/gallery_03.jpg"></li>
+                            <li><img src="./resource/images/gallery_04.jpg"></li>
+                            <li><img src="./resource/images/gallery_05.jpg"></li>
+                            <li><img src="./resource/images/gallery_06.jpg"></li>
+                            <li><img src="./resource/images/gallery_07.jpg"></li>
+                            <li><img src="./resource/images/gallery_08.jpg"></li>
+                            <li><img src="./resource/images/gallery_09.jpg"></li>
+                            <li><img src="./resource/images/gallery_10.jpg"></li>
+                            <li><img src="./resource/images/gallery_11.jpg"></li>
+                            <li><img src="./resource/images/gallery_12.jpg"></li>
+                            <li><img src="./resource/images/gallery_13.jpg"></li>
+                            <li><img src="./resource/images/gallery_14.jpg"></li>
+                            <li><img src="./resource/images/gallery_15.jpg"></li>
+                            <li><img src="./resource/images/gallery_16.jpg"></li>
+                            <li><img src="./resource/images/gallery_17.jpg"></li>
+                            <li><img src="./resource/images/gallery_18.jpg"></li>
+                            <li><img src="./resource/images/gallery_19.jpg"></li>
+                            <li><img src="./resource/images/gallery_20.jpg"></li>
+                            <li><img src="./resource/images/gallery_21.jpg"></li>
+                            <li><img src="./resource/images/gallery_22.jpg"></li>
+                            <li><img src="./resource/images/gallery_23.jpg"></li>
+                            <li><img src="./resource/images/gallery_24.jpg"></li>
+                            <li><img src="./resource/images/gallery_25.jpg"></li>
+                            <li><img src="./resource/images/gallery_26.jpg"></li>
+                            <li><img src="./resource/images/gallery_27.jpg"></li>
+                            <li><img src="./resource/images/gallery_28.jpg"></li>
+                            <li><img src="./resource/images/gallery_29.jpg"></li>
+                            <li><img src="./resource/images/gallery_30.jpg"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let elementsArray = document.querySelectorAll(".area");
+        let screenH = window.innerHeight / 3 * 2.5;
+        let retVal = ele => ele.getBoundingClientRect().top;
+
+        window.onscroll = function () {
+            elementsArray.forEach(function (ele) {
+                let xval = retVal(ele);
+                if (xval < screenH && xval > 0) ele.classList.add("view");
+            });
+        };
+
+
+        elementsArray.forEach((ele, index) => {
+            if (ele.querySelectorAll(".area") !== null) ele.querySelectorAll(".area").forEach((el, index) => el.style.animationDelay = "0." + (index + 3) + "s")
+        })
+
+
+
+        document.documentElement.addEventListener('touchstart', function (event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, false);
+
+        var lastTouchEnd = 0;
+
+        document.documentElement.addEventListener('touchend', function (event) {
+            var now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            } lastTouchEnd = now;
+        }, false);
+
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty("--vh", `${vh}px`);
+        document.querySelector(".main_img").style.maxHeight = document.querySelector(".main_img > img").innerHeight + 'px';
+
+        // document.querySelector('.header').style.height = window.innerHeight + 'px';
+        // console.log(window.innerHeight)
+
+        const remainTime = document.querySelector(".countdown");
+        let days = remainTime.querySelector(".days");
+        let hour = remainTime.querySelector(".hour");
+        let min = remainTime.querySelector(".min");
+        let sec = remainTime.querySelector(".sec");
+        let myDay = document.querySelector(".dday_wrap .myDay_count .myDay");
+
+        function dDay() {
+            const masTime = new Date("2024-02-03 12:00:00");
+            const todayTime = new Date();
+            
+            const diff = masTime - todayTime;
+            
+            const diffDay = Math.floor(diff / (1000*60*60*24));
+            const diffHour = Math.floor((diff / (1000*60*60)) % 24);
+            const diffMin = Math.floor((diff / (1000*60)) % 60);
+            const diffSec = Math.floor(diff / 1000 % 60);
+            
+            days.innerText = `${diffDay}`;
+            hour.innerText = `${diffHour}`;
+            min.innerText = `${diffMin}`;
+            sec.innerText = `${diffSec}`;
+            myDay.innerText = `${diffDay}`;
+        }
+
+        dDay();
+        setInterval(dDay, 1000);
+
+    </script>
+</body>
+
+</html>
