@@ -3,12 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta name="HandheldFriendly" content="true" />
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <title>김민성 ❤ 손지민 결혼합니다</title>
+    <link rel="stylesheet" href="resource/css/slide.css">
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Parisienne&display=swap');
@@ -35,6 +32,7 @@
     :root { scroll-behavior :smooth; }
     body {touch-action: pan-y;font-size: 4vw;line-height: 0;box-sizing: border-box;}
     body, div, img, span, p {margin:0;padding:0;font-family: 'Chosunilbo_myungjo';text-align: center;-webkit-font-smoothing: antialiased;box-sizing: border-box;}
+    ul, li {list-style: none;margin:0;padding:0;}
     .flex_layout {display: flex;justify-content: center;margin-left: auto;margin-right: auto;background: #333;}
     .layout__ {position: relative;max-width: 430px;width: 100vw;background: #fff;}
     .container {max-width: 100vw;}
@@ -56,11 +54,11 @@
     .place_info {padding:35px 0 65px;background: #fff;color:#333;}
     .place_info > p {font-size: 1rem;line-height: 2em;font-family: 'Noto Serif KR';}
     .place_info > .name {font-family: 'Francisco';font-size: 1.9rem;margin-bottom:15px;}
-    .greeting_wrap .inner {background: #fbfbfd;background-image:url(./resource/images/patterns.png);padding:50px 0;}
+    .greeting_wrap .inner {background: #fbfbfd;background-image:url("./resource/images/patterns.png");padding:50px 0;}
     .greeting_wrap h3 {font-family: 'GyeonggiBatang';font-size: 1.1rem;line-height: 1.1rem;font-weight: 100;margin: 50px 0 20px;color:#333;}
     .greeting_wrap .tt {font-size: 0.9rem;color: #8A92B3;font-family: 'GowunBatang-Regular';line-height: 2.5em;border-bottom: 1px solid rgba(138,146,179,0.15);}
     .intrd_area > div:not(.icon) {display: inline-flex;flex-direction: column;}
-    .intrd_area .icon {background: url(./resource/images/icon.svg) no-repeat 50% 50%;width: 20px;height: 36px;background-size: 20px auto;position: relative;margin: 0 auto;
+    .intrd_area .icon {background: url("./resource/images/icon.svg") no-repeat 50% 50%;width: 20px;height: 36px;background-size: 20px auto;position: relative;margin: 0 auto;
         filter: invert(64%) sepia(10%) saturate(813%) hue-rotate(191deg) brightness(89%) contrast(95%);margin-bottom: 20px;}
     .greeting_wrap .invitation {font-size: 0.9rem;line-height: 2em;color:#333;}
     .greeting_wrap .wave_container {top: -50px;height: 70px;}
@@ -118,7 +116,7 @@
     .area {opacity: 0;}
     .area.view{animation: fadeInUp 1s;animation-fill-mode: forwards;animation-delay: 0s;}
     .moving{position: absolute;top: 0;width: 100%;height: 100%;}
-    .moving.heart2{z-index:10;animation: heart2 20s linear infinite;background-image: url(./resource/images/heart2.png),url(./resource/images/heart3.png);pointer-events: none;background-size: cover;}
+    .moving.heart2{animation: heart2 20s linear infinite;background-image: url(./resource/images/heart2.png),url(./resource/images/heart3.png);pointer-events: none;background-size: cover;}
 
     @keyframes flower3 {
         0%{background-position:0 0,0 0,0 0;}
@@ -143,8 +141,6 @@
 
 .calendar_wrap {padding:60px 0;background: #fbfbfd;}
 .area h4 {font-family: 'Parisienne';font-size: 1rem;line-height:1rem;margin: 0 0 15px;color: #8A92B3;font-weight: 400;letter-spacing: 0.15rem;}
-/* .calendar_wrap h4 {background: url(./resource/images/weddingRing.svg) no-repeat 50% 50%;width: 40px;height: 36px;background-size: 40px auto;position: relative;margin: 0 auto;
-        filter: invert(64%) sepia(10%) saturate(813%) hue-rotate(191deg) brightness(89%) contrast(95%);} */
 .calendar_wrap .title .month {font-family: 'Crimson Pro';font-size: 1.5rem;line-height:2.2rem;font-weight: 200;color:#333;}
 .calendar_wrap .title .place {font-size: 1rem;line-height:1.2rem;color:#666;}
 .calendar_wrap .datetime {display: inline-block;font-size: 1rem;line-height: 1.7rem;padding: 16px 30px;margin-top: 1rem;letter-spacing: 1px;border-radius: 8px}
@@ -169,15 +165,15 @@
 .calendar_wrap .my_wedding_day {background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='enable-background:new 0 0 300 257' viewBox='0 0 300 257'%3E%3Cpath d='M279.65 145.59C261.06 174.73 204.45 233.15 150 257 95.55 233.15 38.94 174.73 20.35 145.59 6.41 123.73-1.26 100.47.17 74.61c1.25-22.47 12.64-44.19 30.46-58.02C48.45 2.77 72.39-2.92 94.55 1.44c23.64 4.64 44.64 20.82 55.46 42.22 10.82-21.4 31.81-37.58 55.46-42.22 22.15-4.36 46.09 1.33 63.91 15.15 17.82 13.83 29.21 35.55 30.46 58.02 1.42 25.86-6.25 49.12-20.19 70.98z' style='fill:%23ea7664'/%3E%3C/svg%3E") no-repeat 50% -1px;background-size: 100% 100%;color: #fff;font-weight: 700;}
 
 
-.gallery_wrap {padding:60px 0; background: #fff;}
-.gallery_wrap .gallery_inner {}
-.gallery_wrap .gallery_inner > ul {}
-.gallery_wrap .gallery_inner > ul > li {border-radius: 5px;}
 
 .layer_pop {display: none;position: fixed;top: 0;left: 0;right:0;bottom:0;background:rgba(0,0,0,0.2);z-index:2;}
+.layer_pop.open {display: block;}
 .call_pop .pop_inner {position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);background: #fff;z-index: 3;max-width: 300px;width: 100%;border-radius: 10px;}
 .pop_header {position: relative;background: #c7cce1;padding: 15px;border-radius: 10px 10px 0 0;}
-.pop_header .close_btn {position: absolute;width: 20px;height: 20px;right: 15px;background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m18 18-6-6m0 0L6 6m6 6 6-6m-6 6-6 6'/%3E%3C/svg%3E");}
+.layer_pop .close_btn {font-size:0;position: absolute;width: 40px;height: 40px;right: 0;top:-45px;background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='4' d='m18 18-6-6m0 0L6 6m6 6 6-6m-6 6-6 6'/%3E%3C/svg%3E");}
+
+.layer_pop .gallery_pop {width: 90vw;position: relative;margin: 0 auto;top: 50%;transform: translate(0, -50%);}
+.layer_pop .gallery_pop img {width: 100%;}
 </style>
 <body>
     <div class="flex_layout">
@@ -190,7 +186,7 @@
                         <p>가장 아름다운 순간</p>
                     </div>
                     <div class="img main_img">
-                        <img src="./resource/images/main_.jpg" alt="민성지민">
+                        <img src="https://jimin-coco.github.io/wedding-invitation/resource/images/main_.jpg" alt="민성지민">
                         <!--Waves Container-->
                         <div class="wave_container">
                             <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -250,7 +246,7 @@
                     </div>
                 </div>
                 <div class="img_wrap area">
-                    <img src="./resource/images/info_img1.jpg" alt="지민민성">
+                    <img src="https://jimin-coco.github.io/wedding-invitation/resource/images/info_img1.jpg" alt="지민민성">
                 </div>
                 <div class="info_wrap area">
                     <!-- 신랑 -->
@@ -359,37 +355,136 @@
                 <div class="gallery_wrap area">
                     <h4>Gallery</h4>
                     <div class="gallery_inner">
+                        <div class="gallery_container">
+                            <ul>
+                                <li class="gallery_item" data-index="1">
+                                    <div class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_19.jpg"></div>
+                                </li>
+                                <li class="gallery_item" data-index="2">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_13.jpg"></div>
+                                </li>
+                                <li class="gallery_item" data-index="3">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_12.jpg"></div>
+                                </li>
+                                <li class="gallery_item" data-index="4">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_07.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_14.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_15.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_16.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_25.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_17.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_06.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_08.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_01.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_27.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_28.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_11.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_24.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_10.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_21.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_20.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_22.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_23.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_03.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_05.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_04.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_02.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_18.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_09.jpg"></div>
+                                </li>
+                                <li class="gallery_item">
+                                    <div  class="gallery_img"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_26.jpg"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layer_pop galleryPop">
+            <div class="dim"></div>
+            <div class="gallery_pop">
+                <div class="close_btn" onclick="slidePopClose()">닫기</div>
+                <div class="gallery_pop_slide">
+                    <div class="slide_pop">
                         <ul>
-                            <li><img src="./resource/images/gallery_01.jpg"></li>
-                            <li><img src="./resource/images/gallery_02.jpg"></li>
-                            <li><img src="./resource/images/gallery_03.jpg"></li>
-                            <li><img src="./resource/images/gallery_04.jpg"></li>
-                            <li><img src="./resource/images/gallery_05.jpg"></li>
-                            <li><img src="./resource/images/gallery_06.jpg"></li>
-                            <li><img src="./resource/images/gallery_07.jpg"></li>
-                            <li><img src="./resource/images/gallery_08.jpg"></li>
-                            <li><img src="./resource/images/gallery_09.jpg"></li>
-                            <li><img src="./resource/images/gallery_10.jpg"></li>
-                            <li><img src="./resource/images/gallery_11.jpg"></li>
-                            <li><img src="./resource/images/gallery_12.jpg"></li>
-                            <li><img src="./resource/images/gallery_13.jpg"></li>
-                            <li><img src="./resource/images/gallery_14.jpg"></li>
-                            <li><img src="./resource/images/gallery_15.jpg"></li>
-                            <li><img src="./resource/images/gallery_16.jpg"></li>
-                            <li><img src="./resource/images/gallery_17.jpg"></li>
-                            <li><img src="./resource/images/gallery_18.jpg"></li>
-                            <li><img src="./resource/images/gallery_19.jpg"></li>
-                            <li><img src="./resource/images/gallery_20.jpg"></li>
-                            <li><img src="./resource/images/gallery_21.jpg"></li>
-                            <li><img src="./resource/images/gallery_22.jpg"></li>
-                            <li><img src="./resource/images/gallery_23.jpg"></li>
-                            <li><img src="./resource/images/gallery_24.jpg"></li>
-                            <li><img src="./resource/images/gallery_25.jpg"></li>
-                            <li><img src="./resource/images/gallery_26.jpg"></li>
-                            <li><img src="./resource/images/gallery_27.jpg"></li>
-                            <li><img src="./resource/images/gallery_28.jpg"></li>
-                            <li><img src="./resource/images/gallery_29.jpg"></li>
-                            <li><img src="./resource/images/gallery_30.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_19.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_13.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_12.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_07.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_14.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_15.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_16.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_25.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_17.jpg" ></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_06.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_08.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_01.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_27.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_28.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_11.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_24.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_10.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_21.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_20.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_22.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_23.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_03.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_05.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_04.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_02.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_18.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_09.jpg"></li>
+                            <li class="slide_item"><img src="https://jimin-coco.github.io/wedding-invitation/resource/images/gallery/gallery_26.jpg"></li>
+                            <div class="slide_prev_button slide_button"></div>
+                            <div class="slide_next_button slide_button"></div>
+                            <ul class="slide_pagination"></ul>
                         </ul>
                     </div>
                 </div>
@@ -397,6 +492,9 @@
         </div>
     </div>
     <script>
+
+        function Mobile() {return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);}
+
         let elementsArray = document.querySelectorAll(".area");
         let screenH = window.innerHeight / 3 * 2.5;
         let retVal = ele => ele.getBoundingClientRect().top;
@@ -430,13 +528,13 @@
             } lastTouchEnd = now;
         }, false);
 
+
+        // 높이값
         let vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty("--vh", `${vh}px`);
         document.querySelector(".main_img").style.maxHeight = document.querySelector(".main_img > img").innerHeight + 'px';
 
-        // document.querySelector('.header').style.height = window.innerHeight + 'px';
-        // console.log(window.innerHeight)
-
+        // 디데이
         const remainTime = document.querySelector(".countdown");
         let days = remainTime.querySelector(".days");
         let hour = remainTime.querySelector(".hour");
@@ -465,7 +563,71 @@
         dDay();
         setInterval(dDay, 1000);
 
+
+        // 이미지 슬라이드
+        const sliderContainer = document.querySelector('.gallery_container');
+        const slider = document.querySelector('.gallery_container ul');
+        const sliderItem = slider.querySelectorAll('.gallery_item');
+
+
+        let clicked = false;
+        let xAxis;
+        let x;
+
+        sliderContainer.addEventListener('mouseup', () => {
+            sliderContainer.style.cursor = `grab`;
+        }) 
+
+        sliderContainer.addEventListener('mousedown', e => {
+            clicked = true
+            xAxis = e.offsetX - slider.offsetLeft;
+            sliderContainer.style.cursor = `grabbing`;
+        })
+
+        window.addEventListener('mouseup', () => {
+            clicked = false;
+        })
+
+        sliderContainer.addEventListener('mousemove', e => {
+            if (!clicked) return;
+            e.preventDefault();
+
+            x = e.offsetX;
+            slider.style.left = `${x - xAxis}px`;
+            // if(!Mobile()) slider.style.pointerEvents = 'none';
+
+            checkSize();
+        })
+
+        const checkSize = () => {
+            let sliderContainerOut = sliderContainer.getBoundingClientRect();
+            let sliderIn = slider.getBoundingClientRect();
+            if (parseInt(slider.style.left) > 0) {
+                slider.style.left = `0px`;
+            }else if (sliderIn.right < sliderContainerOut.right) {
+                slider.style.left = `-${sliderIn.width - sliderContainerOut.width}px`;
+            }
+
+            if( Math.abs(slider.offsetLeft) >= (slider.scrollWidth - sliderContainer.offsetWidth)) {
+                slider.style.left = `-${slider.scrollWidth - sliderContainer.offsetWidth}px`;
+            }
+        }
+
+        sliderContainer.addEventListener('touchstart', e => {
+            clicked = true;
+            xAxis = e.targetTouches[0].clientX - slider.offsetLeft;
+        },{passive: true})
+
+        sliderContainer.addEventListener('touchmove', e => {
+            if(!clicked) return;
+            x = e.targetTouches[0].clientX;
+            slider.style.left = `${x - xAxis}px`;
+            checkSize();
+        },{passive: true})
+
+
     </script>
+    <script type="text/javascript" src="resource/js/slide.js"></script>
 </body>
 
 </html>
