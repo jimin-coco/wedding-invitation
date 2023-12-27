@@ -1,0 +1,123 @@
+.testInfo {    font-size: 40px;
+  font-weight: bold;
+  background: #000;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  line-height: 40px;
+  z-index: 999;
+  left: 50%;
+  padding: 10px;
+}
+.slide_pop > ul {
+    /* layout */
+    display: flex;
+    flex-wrap: nowrap;
+    /* 컨테이너의 내용물이 컨테이너 크기(width, height)를 넘어설 때 보이지 않도록 하기 위해 hidden을 준다. */
+    overflow: hidden;
+  
+    /* position */
+    /* slide_button의 position absolute가 컨테이너 안쪽에서 top, left, right offset이 적용될 수 있도록 relative를 준다. (기본값이 static인데, static인 경우 그 상위 컨테이너로 나가면서 현재 코드에선 html을 기준으로 offset을 적용시키기 때문) */
+    position: relative;
+  
+    /* size */
+    width: 100%;
+  }
+  .slide_item {
+    /* layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    /* position - 버튼 클릭시 left offset값을 적용시키기 위해 */
+    position: relative;
+    left: 0px;
+  
+    /* size */
+    width: 100%;
+    /* flex item의 flex-shrink는 기본값이 1이므로 컨테이너 크기에 맞게 줄어드는데, 슬라이드를 구현할 것이므로 줄어들지 않도록 0을 준다. */
+    flex-shrink: 0;
+  
+    /* transition */
+    transition: left 0.15s;
+  }
+  .slide_button {
+    /* layout */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    /* position */
+    position: absolute;
+    /* 버튼이 중앙에 위치하게 하기위해 계산 */
+    top: calc(50% - 16px);
+  
+    /* size */
+    width: 32px;
+    height: 32px;
+  
+    /* style */
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+  
+  .slide_prev_button {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='19' height='33'%3E%3Cpath fill='%23FFF' fill-rule='evenodd' d='M18.63 5.519 7.142 16.441 18.59 27.359c.63 1.161.63 3.044 0 4.205-1.692 1.162-3.44 1.162-4.736 0L.851 18.561c-.437-.438-.709-.979-.511-1.391-.185-.44-.227-1.62.505-2.847L13.856 1.311c1.324-1.162 3.045-1.162 4.774 0 .595 1.162.595 3.046 0 4.208Z'/%3E%3C/svg%3E");
+    left: 10px;
+  }
+  .slide_next_button {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='33'%3E%3Cpath fill='%23FFF' fill-rule='evenodd' d='M19.84 17.17c-.108.412-.38.953-.61 1.391L6.2 31.564c-1.341 1.162-3.224 1.162-4.385 0a2.974 2.974 0 0 1 0-4.205l10.917-10.918L1.811 5.519a2.976 2.976 0 0 1 0-4.208C2.973.149 4.856.149 6.18 1.311l13.11 13.012c.471 1.227 1.01 2.407.55 2.847Z'/%3E%3C/svg%3E");
+    right: 10px;
+  }
+  
+
+
+.gallery_wrap {padding:60px 0; background: #fff;width: 100%;overflow: hidden;}
+.gallery_wrap .gallery_inner {position: relative;height:580px;margin:0 auto;}
+.gallery_wrap .gallery_container {position: absolute;width: 100%;height: 580px;cursor: grab;}
+.gallery_wrap .gallery_container > ul {position: absolute;top: 0;left: 0;width: auto;height: 100%;display: flex;/*pointer-events: none;*/}
+
+.gallery_wrap .gallery_item {position: absolute;overflow: hidden;width: 190px;height: 100%;}
+.gallery_wrap .gallery_img {height: inherit;box-sizing: border-box;border-radius: 10px;overflow: hidden;}
+.gallery_wrap .gallery_img img {position: relative;width: 100%;object-fit: cover;user-select: none;}
+
+.gallery_wrap .gallery_item:nth-child(1) {left:0;height: 125px;padding-left:15px;}
+.gallery_wrap .gallery_item:nth-child(2) {left:0;top: 135px;height: 200px;padding-left:15px;}
+.gallery_wrap .gallery_item:nth-child(2) img {top: -35%;}
+.gallery_wrap .gallery_item:nth-child(3) {left:0;height: 175px;top: 345px;padding-left:15px;}
+.gallery_wrap .gallery_item:nth-child(3) img {width: 144%;left: -28%;top: -37%;}
+.gallery_wrap .gallery_item:nth-child(4) {left: 215px;height: 285px;top: 40px;}
+.gallery_wrap .gallery_item:nth-child(5) {left: 215px;top: 335px;height: 224px;}
+.gallery_wrap .gallery_item:nth-child(6) {left: 415px;height: 240px;}
+.gallery_wrap .gallery_item:nth-child(7) {left: 415px;top: 250px;}
+.gallery_wrap .gallery_item:nth-child(8) {left: 615px;height: 280px;top: 20px;}
+.gallery_wrap .gallery_item:nth-child(9) {left: 615px;top: 310px;height: 200px;}
+.gallery_wrap .gallery_item:nth-child(9) img {top: -26%;}
+.gallery_wrap .gallery_item:nth-child(10) {left: 815px;height: 180px;}
+.gallery_wrap .gallery_item:nth-child(11) {left: 815px;top: 190px;height: 200px;}
+.gallery_wrap .gallery_item:nth-child(12) {left: 815px;top: 400px;height: 135px;}
+.gallery_wrap .gallery_item:nth-child(12) img {width: 172%;left: -41%;top: -57%;}
+.gallery_wrap .gallery_item:nth-child(13) {left: 1015px;height: 285px;}
+.gallery_wrap .gallery_item:nth-child(14) {left: 1015px;top: 295px;height: 240px;}
+.gallery_wrap .gallery_item:nth-child(14) img {top: -16%;}
+.gallery_wrap .gallery_item:nth-child(15) {left: 1215px;height: 170px;top: 20px;}
+.gallery_wrap .gallery_item:nth-child(16) {left: 1215px;top: 200px;height: 190px;}
+.gallery_wrap .gallery_item:nth-child(17) {left: 1215px;top: 400px;height: 115px;}
+.gallery_wrap .gallery_item:nth-child(17) img {top: -19%;}
+.gallery_wrap .gallery_item:nth-child(18) {left: 1415px;height: 285px;}
+.gallery_wrap .gallery_item:nth-child(19) {left: 1415px;top: 295px;height: 245px;}
+.gallery_wrap .gallery_item:nth-child(20) {left: 1615px;height: 220px;top: 10px;}
+.gallery_wrap .gallery_item:nth-child(21) {left: 1615px;top: 240px;height: 285px;}
+.gallery_wrap .gallery_item:nth-child(21) img {width: 120%;left: -13%;}
+.gallery_wrap .gallery_item:nth-child(22) {left: 1815px;height: 115px;}
+.gallery_wrap .gallery_item:nth-child(22) img {top: -17%;}
+.gallery_wrap .gallery_item:nth-child(23) {left: 1815px;top: 125px;height: 220px;}
+.gallery_wrap .gallery_item:nth-child(24) {left: 1815px;top: 355px;height: 185px;}
+.gallery_wrap .gallery_item:nth-child(24) img {width: 180%;left: -36%;top: -88%;}
+.gallery_wrap .gallery_item:nth-child(25) {left: 2015px;height: 220px;}
+.gallery_wrap .gallery_item:nth-child(26) {left: 2015px;top: 230px;}
+.gallery_wrap .gallery_item:nth-child(27) {left: 2215px;height: 260px;padding-right:15px;}
+.gallery_wrap .gallery_item:nth-child(27) img {width: 135%;left: -10%;top: -43%;}
+.gallery_wrap .gallery_item:nth-child(28) {left: 2215px;top: 270px;height: 260px;padding-right:15px;}
+.gallery_wrap .gallery_item:nth-child(28) img {top: -9%;}
