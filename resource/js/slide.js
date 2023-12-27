@@ -1,12 +1,15 @@
 
-        const slide = document.querySelector(".slide_pop > ul");
-        let slideWidth = slide.clientWidth;
-
-        const slideItems = slide.querySelectorAll(".slide_item");
     
+
+
+                
+                
         
         const slidePop = (index) => {
-            
+            const slide = document.querySelector(".slide_pop > ul");
+            let slideWidth = slide.clientWidth;
+
+            const slideItems = slide.querySelectorAll(".slide_item");
             // 버튼 엘리먼트 선택하기
             const prevBtn = document.querySelector(".slide_prev_button");
             const nextBtn = document.querySelector(".slide_next_button");
@@ -16,6 +19,15 @@
 
             // 버튼 클릭할 때 마다 현재 슬라이드가 어디인지 알려주기 위한 변수
             let currSlide = index;
+
+            // 슬라이드를 이동시키기 위한 offset 계산
+            const offset = slide.clientWidth * (currSlide - 1);
+            // 각 슬라이드 아이템의 left에 offset 적용
+            slideItems.forEach((i) => {
+                i.querySelector("img").style.width = slideWidth+"px";
+                i.setAttribute("style", `left: ${-offset}px;width: ${slideWidth}px`);
+            });
+            
 
             // 페이지네이션 생성
             const pagination = document.querySelector(".slide_pagination");
@@ -35,7 +47,7 @@
                 const offset = slideWidth * (currSlide - 1);
                 // 각 슬라이드 아이템의 left에 offset 적용
                 slideItems.forEach((i) => {
-                    i.setAttribute("style", `left: ${-offset}px`);
+                    i.setAttribute("style", `left: ${-offset}px;width: ${slideWidth}px`);
                 });
                 // 슬라이드 이동 시 현재 활성화된 pagination 변경
                 paginationItems.forEach((i) => i.classList.remove("active"));
@@ -52,7 +64,7 @@
                 const offset = slideWidth * (currSlide - 1);
                 // 각 슬라이드 아이템의 left에 offset 적용
                 slideItems.forEach((i) => {
-                    i.setAttribute("style", `left: ${-offset}px`);
+                    i.setAttribute("style", `left: ${-offset}px;width: ${slideWidth}px`);
                 });
                 // 슬라이드 이동 시 현재 활성화된 pagination 변경
                 paginationItems.forEach((i) => i.classList.remove("active"));
@@ -125,7 +137,6 @@
             slide.addEventListener("touchstart", (e) => {
                 console.log("touchstart", e.touches[0].pageX);
                 startPoint = e.touches[0].pageX; // 터치가 시작되는 위치 저장
-                handleTouchMove(event);
             });
             slide.addEventListener("touchend", (e) => {
                 console.log("touchend", e.changedTouches[0].pageX);
@@ -139,56 +150,17 @@
                 console.log("next move");
                 nextMove();
                 }
-                handleTouchEnd();
             });
-
-            function handleTouchMove(event) {
-                endX = event.touches[0].clientX;
-                endY = event.touches[0].clientY;
-            
-                const distanceX = endX - startX;
-                const distanceY = endY - startY;
-            
-                if (Math.abs(distanceX) > Math.abs(distanceY)) {
-                    event.preventDefault();
-                }
-            }
-            
-            function handleTouchEnd() {
-                const distanceX = endX - startX;
-                const distanceY = endY - startY;
-            
-                if (Math.abs(distanceX) > Math.abs(distanceY) && distanceX > 50) {
-                    newSetCarousel.setCurrentState({
-                        className: 'carousel-controls-previous',
-                    });
-                } else if (Math.abs(distanceX) > Math.abs(distanceY) && distanceX < -50) {
-                    newSetCarousel.setCurrentState({
-                        className: 'carousel-controls-next',
-                    });
-                }
-            
-                startX = NaN;
-                startY = NaN;
-                endX = NaN;
-                endY = NaN;
-            }
 
         }
 
         
 
         const slidePopOpen = (ele) => {
+            let myIndex = Number(ele.dataset.index);
+
             document.querySelector(".layer_pop.galleryPop").classList.add("open");
-            slidePop(ele.dataset.index);
-            const offset = slideWidth * (Number(ele.dataset.index));
-            // 각 슬라이드 아이템의 left에 offset 적용
-            slideItems.forEach((i) => {
-                i.setAttribute("style", `left: ${-offset}px`);
-            });
-            console.dir(slide.clientWidth)
-            console.dir(ele.dataset.index)
-            console.dir(slideWidth * (Number(ele.dataset.index)))
+            slidePop(myIndex);
             document.getElementsByTagName('body')[0].style.overflow = 'hidden';
         }
         const slidePopClose = (e) => {
