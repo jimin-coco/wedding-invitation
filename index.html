@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>김민성 ❤ 손지민 결혼합니다</title>
     <link rel="stylesheet" href="resource/css/slide.css">
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69b47f5e9cc6ec102a3c8b39d97b322c&libraries=services"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Parisienne&display=swap');
@@ -34,11 +37,13 @@
     body, div, img, span, p {margin:0;padding:0;font-family: 'Chosunilbo_myungjo';text-align: center;-webkit-font-smoothing: antialiased;box-sizing: border-box;}
     ul, li {list-style: none;margin:0;padding:0;}
     .flex_layout {display: flex;justify-content: center;margin-left: auto;margin-right: auto;background: #333;}
-    .layout__ {position: relative;max-width: 430px;width: 100vw;background: #fff;}
+    .layout__ {position: relative;max-width: 430px;width: 100vw;background: #fff;z-index: 1;}
     .container {max-width: 100vw;}
     .header {position: relative;background:#fff;height:100vh;/*display: grid;grid-template-rows: 1fr auto;*/overflow: hidden;max-height: 735px;}
     
-    
+    .area .subTitle {font-size: 0.9rem;line-height: 2em;font-family: 'Chosunilbo_myungjo';color: #666;}
+    .place_info .subTitle {font-size: 1rem;}
+
     .header {
         height: 100vh;
         height: calc(var(--vh, 1vh) * 100);
@@ -52,8 +57,7 @@
     .header .main_img > img {width:100%;height: 100%;}
     .main_img {position: relative;}
     .place_info {padding:35px 0 65px;background: #fff;color:#333;}
-    .place_info > p {font-size: 1rem;line-height: 2em;font-family: 'Noto Serif KR';}
-    .place_info > .name {font-family: 'Francisco';font-size: 1.9rem;margin-bottom:15px;}
+    .place_info > .name {font-family: 'Francisco';font-size: 1.9rem;margin-bottom:15px;line-height: 2rem;}
     .greeting_wrap .inner {background: #fbfbfd;background-image:url("./resource/images/patterns.png");padding:50px 0;}
     .greeting_wrap h3 {font-family: 'GyeonggiBatang';font-size: 1.1rem;line-height: 1.1rem;font-weight: 100;margin: 50px 0 20px;color:#333;}
     .greeting_wrap .tt {font-size: 0.9rem;color: #8A92B3;font-family: 'GowunBatang-Regular';line-height: 2.5em;border-bottom: 1px solid rgba(138,146,179,0.15);}
@@ -164,8 +168,48 @@
 #app .c_calendar_table {line-height: 1.8rem}
 .calendar_wrap .my_wedding_day {background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='enable-background:new 0 0 300 257' viewBox='0 0 300 257'%3E%3Cpath d='M279.65 145.59C261.06 174.73 204.45 233.15 150 257 95.55 233.15 38.94 174.73 20.35 145.59 6.41 123.73-1.26 100.47.17 74.61c1.25-22.47 12.64-44.19 30.46-58.02C48.45 2.77 72.39-2.92 94.55 1.44c23.64 4.64 44.64 20.82 55.46 42.22 10.82-21.4 31.81-37.58 55.46-42.22 22.15-4.36 46.09 1.33 63.91 15.15 17.82 13.83 29.21 35.55 30.46 58.02 1.42 25.86-6.25 49.12-20.19 70.98z' style='fill:%23ea7664'/%3E%3C/svg%3E") no-repeat 50% -1px;background-size: 100% 100%;color: #fff;font-weight: 700;}
 
+.map_wrap {background:#fbfbfd;padding: 60px 0;}
+.map_wrap .map_container .title, 
+.account_wrap .account_container .title {font-size: 1.2rem;line-height: 2.2rem;font-weight: 200;color: #333;}
+/* .map_wrap .map_container .address {font-size: 0.9rem;line-height: 1.8rem;color: #333;margin-top: 10px;} */
+.copy_popup {display: none;position: absolute;background: rgba(0,0,0,0.5);padding: 6px 12px;font-size: 0.8rem;color: #fff;line-height: 1.2rem;border-radius: 5px;left: 50%;transform: translate(-50%, 20px);}
+#copy-map-address {background: #fff;border: 1px solid #ddd;padding: 10px;border-radius: 5px;font-size: 0.9rem;line-height: 0.9rem;color: #333;margin: 10px 0 50px;}
+.navi_btn {display: grid;grid-template-columns: repeat(3, 1fr);justify-items: center;padding: 10px 0;background: #fff;border: 1px solid #ddd;margin: 30px 20px 60px;}
+.navi_btn > a {font-size: 0.8rem;line-height: 0.9rem;color: #333;text-decoration: none;display: flex;justify-content: center;align-items: center;border-right: 1px solid #eee;width: 100%;text-align: center;}
+.navi_btn > a:last-child {border-right: none;}
+.navi_btn > a::before {content: '';display: inline-flex;width: 17px;height: 17px;background-size: 17px auto;padding-right: 5px;}
+.kakaoNavi::before {background: url(./resource/images/kakaonavi.jpeg) no-repeat 0 50%;}
+.naverNavi::before {background: url(./resource/images/navermap.jpeg) no-repeat 0 50%;}
+.tmapNavi::before {background: url(./resource/images/tmap.jpeg) no-repeat 0 50%;}
+.map_info {line-height: 1rem;padding: 0 20px;}
+.map_info li { margin-top: 30px;}
+.map_info .title {text-align: left;font-size: 0.9rem;border-bottom: 1px dashed #ddd;padding-bottom: 10px;margin-bottom: 10px;color: #8A92B3;}
+.map_info .text {text-align: left;font-size: 0.8rem;}
+.map_info .text > p {text-align: left;}
+.map_info .highlight {text-decoration: none;color: #ea7664;font-style: normal;}
 
+.account_wrap {padding: 60px 0;background: #fff;}
+.account_wrap .item {border: 1px solid #ddd;font-size: 0.8rem;padding: 6px;margin: 40px 20px 20px;border-radius: 5px;}
+.account_wrap .item:last-child {margin-top: 10px;}
+.account_wrap .item .arrow {position: absolute;top: 50%;right: 0;transform: translate(0, -50%);width: 20px;height: 20px;background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23666' class='style-icon arrow-icon absolute top-1/2 right-6 -translate-y-1/2 justify-self-end' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m19 9-7 7-7-7'/%3E%3C/svg%3E");}
+.account_wrap .item .title {font-size: 0.8rem;position: relative;}
+.account_wrap .item .account_info {display: none;}
 
+.account_wrap .item.on .arrow {transform: rotate(180deg) translate(0, 50%);}
+.account_wrap .item.on .account_info {display: block;}
+.account_wrap .item.on .title {border-bottom: 1px solid #ddd;}
+.account_info {padding: 10px;}
+.account_info li {border-bottom: 1px solid #eee;padding: 10px;}
+.account_info li:last-child {border-bottom: none;}
+.account_info > li > div {display: flex;justify-content: space-between;align-items: center;}
+.account_info > li > div > p {font-size: 0.9rem;}
+.kakao_pay {background: url(./resource/images/kpay_a.jpeg) no-repeat 50% 50%;background-size: 50px auto;width: 64px;height: 30px;background-color: #fae14b;border-radius: 5px;}
+.copy_account_btn {width: 64px;height: 30px;background-color: #fff;border-radius: 5px;border: 1px solid #ddd;margin-top: 10px;}
+
+.thankU {font-size: 0.6rem;line-height: 1rem;color: #666;margin:50px 0 80px;}
+.thankU h4 {font-family: 'Francisco';font-size: 1rem;margin-bottom:0;line-height: 2rem;color:#888;font-weight: normal;}
+
+.back {background: #fff;position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
 .layer_pop {position: fixed;top: 0;left: 0;right:0;bottom:0;background:rgba(0,0,0,0.8);z-index: -9999;}
 .layer_pop.open {z-index: 10;}
 .call_pop .pop_inner {position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);background: #fff;z-index: 3;max-width: 300px;width: 100%;border-radius: 10px;}
@@ -212,7 +256,7 @@
                 </div>
                 <div class="place_info area">
                     <p class="name">Minseong and Jimin</p>
-                    <p class="area">2024년 2월 3일 토요일 낮 12시<br>더아리엘 6층 스카이가든홀</p>
+                    <p class="area subTitle">2024년 2월 3일 토요일 낮 12시<br>더아리엘 6층 스카이가든홀</p>
                 </div>
                 <div class="greeting_wrap area area_wrap">
                     <div class="wave_container">
@@ -445,8 +489,138 @@
                         </div>
                     </div>
                 </div>
+                <div class="map_wrap area">
+                    <h4>Location</h4>
+                    <div class="map_container">
+                        <div class="title">오시는 길</div>
+                        <div class="address subTitle">경기도 수원시 팔달구 중부대로 181(우만동147-7)<br> 더 아리엘 6층 스카이가든홀<br>Tel.031-214-9300</div>
+                        <button id="copy-map-address" class="copy_btn" data-clipboard-text="경기도 수원시 팔달구 중부대로 181 더아리엘">
+                            <span>주소 복사</span>
+                            <div class="copy_popup"><span>주소가 복사되었습니다</span></div>
+                        </button>
+                        <div id="map" style="width:100%;height:100vw;max-height: 340px;"></div>
+                        <div class="navi_btn">
+                            <a href="https://map.kakao.com/link/to/1298739354" class="kakaoNavi">카카오내비</a>
+                            <a href="https://map.naver.com/v5/directions/-/14141610.66228697,4477862.276015002,%EB%8D%94%20%EC%95%84%EB%A6%AC%EC%97%98,11729241,PLACE_POI/-/car" class="naverNavi">네이버지도</a>
+                            <a href="https://surl.tmobiapi.com/a5394a25" class="tmapNavi">티맵 경로 안내</a>
+                        </div>
+                    </div>
+                    <div class="map_info">
+                        <ul>
+                            <li>
+                                <div class="title">주차</div>
+                                <div class="text">
+                                    <p>예식장 1층, 지하1층 , 주차타워, 외부주차장<em class="highlight">(주차요원 안내 - 외부주차장 2시간 무료, 그 외 주차장 무료)</em></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="title">셔틀</div>
+                                <div class="text">수원역 10번 출구 뒷편 버스정류장 앞 <strong class="highlight">[10:50, 11:20] 2번 운영</strong></div>
+                            </li>
+                            <li>
+                                <div class="title">지하철</div>
+                                <div class="text">
+                                    <strong>#수원역 4번출구 앞 </strong><br>
+                                    720-2, 83-1, 10, 10-2, 10-5, 11-1, 37, 13-4 이용 후<br>
+                                    [수원고용센터.동수원병원.라마다호텔 앞] 하차 (도보 3분)<br><br>
+                                    <strong>#수원시청역 1번 출구 앞</strong><br>82-1(직통) 이용 후 [우만신성아파트] 하차
+                                </div>
+                            </li>
+                            <li>
+                                <div class="title">버스</div>
+                                <div class="text"><strong>#강남역 5번출구</strong> 3002 [월드메르디앙] 하차 (도보 3분)</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="account_wrap area">
+                    <h4>Account</h4>
+                    <div class="account_container">
+                        <div class="title">마음 전하실 곳</div>
+                        <div class="text subTitle">
+                            참석이 어려워 직접 축하를 전하지 못하는<br>분들을 위해 계좌번호를 기재하였습니다.<br>
+                            넓은 마음으로 양해 부탁드립니다.<br>
+                            전해주시는 진심은 소중하게 간직하여<br>
+                            좋은 부부의 모습으로 보답하겠습니다.
+                        </div>
+                        <div class="item">
+                            <div class="title">
+                                <p>신랑측 계좌번호</p>
+                                <div class="arrow"></div>
+                            </div>
+                            <ul class="account_info">
+                                <li>
+                                    <div>
+                                        <p><strong>신랑</strong> 김민성</p>
+                                        <a href="" class="kakao_pay"></a>
+                                    </div>
+                                    <div>
+                                        <p class="bank">신한 <span class="account">123-123-123</span></p>
+                                        <button id="copy-account01" class="copy_account_btn" data-clipboard-text="123-123-123">
+                                            <span>복사</span>
+                                            <div class="copy_popup"><span>복사되었습니다</span></div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <p><strong>아버지</strong> 김종찬</p>
+                                        <a href="" class="kakao_pay"></a>
+                                    </div>
+                                    <div>
+                                        <p class="bank">신한 <span class="account">123-123-123</span></p>
+                                        <button id="copy-account02" class="copy_account_btn" data-clipboard-text="123-123-123">
+                                            <span>복사</span>
+                                            <div class="copy_popup"><span>복사되었습니다</span></div>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <div class="title">
+                                <p>신부측 계좌번호</p>
+                                <div class="arrow"></div>
+                            </div>
+                            <ul class="account_info">
+                                <li>
+                                    <div>
+                                        <p><strong>신부</strong> 손지민</p>
+                                        <a href="" class="kakao_pay"></a>
+                                    </div>
+                                    <div>
+                                        <p class="bank">신한 <span class="account">123-123-123</span></p>
+                                        <button id="copy-account03" class="copy_account_btn" data-clipboard-text="123-123-123">
+                                            <span>복사</span>
+                                            <div class="copy_popup"><span>복사되었습니다</span></div>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <p><strong>아버지</strong> 손치수</p>
+                                        <a href="" class="kakao_pay"></a>
+                                    </div>
+                                    <div>
+                                        <p class="bank">신한 <span class="account">123-123-123</span></p>
+                                        <button id="copy-account04" class="copy_account_btn" data-clipboard-text="123-123-123">
+                                            <span>복사</span>
+                                            <div class="copy_popup"><span>복사되었습니다</span></div>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="thankU">
+                    <h4>Jimin</h4>
+                    Copyright © 2024. jimin. All right reserved.<br><br>
+                    감사합니다.
+                </div>
             </div>
         </div>
+        <div class="back"></div>
         <div class="layer_pop galleryPop">
             <div class="dim"></div>
             <div class="gallery_pop">
@@ -628,7 +802,66 @@
             checkSize();
         },{passive: true})
 
+        //지도
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = { 
+                center: new kakao.maps.LatLng(37.277602810329704, 127.03625389060775), //지도의 중심좌표.
+                level: 4 // 지도의 확대 레벨
+            };
 
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+        var imageSrc = './resource/images/marker.png', // 마커이미지의 주소입니다    
+            imageSize = new kakao.maps.Size(50, 54), // 마커이미지의 크기입니다
+            imageOption = {offset: new kakao.maps.Point(20, 52)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+            
+        // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+            markerPosition = new kakao.maps.LatLng(37.277602810329704, 127.03625389060775); // 마커가 표시될 위치입니다
+
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            position: markerPosition, 
+            image: markerImage // 마커이미지 설정 
+        });
+
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(map);
+
+        //복사
+        let copyAddress = new ClipboardJS('#copy-map-address');
+        let copyAccount01 = new ClipboardJS('#copy-account01');
+        let copyAccount02 = new ClipboardJS('#copy-account02');
+        let copyAccount03 = new ClipboardJS('#copy-account03');
+        let copyAccount04 = new ClipboardJS('#copy-account04');
+      
+        copyAddress.on('success', function(e) {copyItem(e)});
+        copyAccount01.on('success', function(e) {copyItem(e)});
+        copyAccount02.on('success', function(e) {copyItem(e)});
+        copyAccount03.on('success', function(e) {copyItem(e)});
+        copyAccount04.on('success', function(e) {copyItem(e)});
+
+
+        function copyItem(event) {
+            console.log(event)
+            let copySuccess = event.trigger.querySelector('.copy_popup');
+            copySuccess.style.display='block';
+            setTimeout(() => {copySuccess.style.display = 'none'}, 2000);
+        }
+
+        //계죄번호 확인
+        let accountWrap = document.querySelector(".account_wrap");
+        let accountItem = accountWrap.querySelectorAll(".item .title");
+        accountItem.forEach(ele => ele.addEventListener("click", function(){
+            let itemArea = this.parentElement;
+            if(itemArea.classList.contains("on")){
+                accountItem.forEach(el => el.parentElement.classList.remove("on"));
+                itemArea.classList.remove("on");
+            } else {
+                accountItem.forEach(el => el.parentElement.classList.remove("on"));
+               itemArea.classList.add("on");
+            }
+        }));
     </script>
     <script type="text/javascript" src="resource/js/slide.js"></script>
 </body>
