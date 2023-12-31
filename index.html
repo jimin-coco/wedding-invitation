@@ -199,10 +199,10 @@
 .account_wrap .item.on .arrow {transform: rotate(180deg) translate(0, 50%);}
 .account_wrap .item.on .account_info {display: block;}
 .account_wrap .item.on .title {border-bottom: 1px solid #ddd;}
-.account_info {padding: 10px;}
+.account_info {padding: 10px 10px 0;}
 .account_info li {border-bottom: 1px solid #eee;padding: 10px;}
 .account_info li:last-child {border-bottom: none;}
-.account_info > li > div {display: flex;justify-content: space-between;align-items: center;}
+.account_info > li > div {display: flex;justify-content: space-between;align-items: center;min-height: 30px;}
 .account_info > li > div > p {font-size: 0.9rem;}
 .kakao_pay {background: url(./resource/images/kpay_a.jpeg) no-repeat 50% 50%;background-size: 50px auto;width: 64px;height: 30px;background-color: #fae14b;border-radius: 5px;}
 .copy_account_btn {width: 64px;height: 30px;background-color: #fff;border-radius: 5px;border: 1px solid #ddd;margin-top: 10px;}
@@ -211,13 +211,13 @@
 .thankU h4 {font-family: 'Francisco';font-size: 1rem;margin-bottom:0;line-height: 2rem;color:#888;font-weight: normal;}
 
 .back {background: #fff;position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
-.layer_pop {position: fixed;top: 0;left: 0;right:0;bottom:0;background:rgba(0,0,0,0.8);z-index: -9999;}
-.layer_pop.open {z-index: 10;}
+.layer_pop {position: fixed;top: 0;left: 0;right:0;bottom:0;background:rgba(0,0,0,0.8);z-index: -9999;visibility: hidden;}
+.layer_pop.open {z-index: 10;visibility:visible;}
 .call_pop .pop_inner {position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);background: #fff;z-index: 3;max-width: 300px;width: 100%;border-radius: 10px;}
 .pop_header {position: relative;background: #c7cce1;padding: 15px;border-radius: 10px 10px 0 0;}
-.layer_pop .close_btn {font-size:0;position: absolute;width: 40px;height: 40px;left: 50%;bottom:-45px;transform: translate(-50%, 0);background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='4' d='m18 18-6-6m0 0L6 6m6 6 6-6m-6 6-6 6'/%3E%3C/svg%3E");}
+.layer_pop .close_btn {font-size:0;position: absolute;width: 40px;height: 40px;left: 50%;bottom:45px;transform: translate(-50%, 0);background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='4' d='m18 18-6-6m0 0L6 6m6 6 6-6m-6 6-6 6'/%3E%3C/svg%3E");}
 
-.layer_pop .gallery_pop {width: 90vw;position: relative;margin: 0 auto;top: 50%;transform: translate(0, -50%);}
+.layer_pop .gallery_pop {width: 90vw;position: relative;margin: 0 auto;top: 50%;transform: translate(0, -60%);}
 .layer_pop .gallery_pop img {width: 100%;}
 </style>
 <body>
@@ -503,7 +503,7 @@
                         <div class="navi_btn">
                             <a href="https://map.kakao.com/link/to/1298739354" class="kakaoNavi">카카오내비</a>
                             <a href="https://map.naver.com/v5/directions/-/14141610.66228697,4477862.276015002,%EB%8D%94%20%EC%95%84%EB%A6%AC%EC%97%98,11729241,PLACE_POI/-/car" class="naverNavi">네이버지도</a>
-                            <a href="https://surl.tmobiapi.com/a5394a25" class="tmapNavi">티맵 경로 안내</a>
+                            <a href="https://surl.tmobiapi.com/a5394a25" class="tmapNavi">티맵</a>
                         </div>
                     </div>
                     <div class="map_info">
@@ -553,11 +553,11 @@
                                 <li>
                                     <div>
                                         <p><strong>신랑</strong> 김민성</p>
-                                        <a href="" class="kakao_pay"></a>
+                                        <a href="https://qr.kakaopay.com/FSagqiU62" class="kakao_pay"></a>
                                     </div>
                                     <div>
-                                        <p class="bank">신한 <span class="account">123-123-123</span></p>
-                                        <button id="copy-account01" class="copy_account_btn" data-clipboard-text="123-123-123">
+                                        <p class="bank">우리 <span class="account">1002-960-493042</span></p>
+                                        <button id="copy-account01" class="copy_account_btn" data-clipboard-text="1002-960-493042">
                                             <span>복사</span>
                                             <div class="copy_popup"><span>복사되었습니다</span></div>
                                         </button>
@@ -566,11 +566,11 @@
                                 <li>
                                     <div>
                                         <p><strong>아버지</strong> 김종찬</p>
-                                        <a href="" class="kakao_pay"></a>
+                                        <!-- <a href="" class="kakao_pay"></a> -->
                                     </div>
                                     <div>
-                                        <p class="bank">신한 <span class="account">123-123-123</span></p>
-                                        <button id="copy-account02" class="copy_account_btn" data-clipboard-text="123-123-123">
+                                        <p class="bank">하나 <span class="account">468-910029-16607</span></p>
+                                        <button id="copy-account02" class="copy_account_btn" data-clipboard-text="468-910029-16607">
                                             <span>복사</span>
                                             <div class="copy_popup"><span>복사되었습니다</span></div>
                                         </button>
@@ -587,11 +587,11 @@
                                 <li>
                                     <div>
                                         <p><strong>신부</strong> 손지민</p>
-                                        <a href="" class="kakao_pay"></a>
+                                        <a href="https://qr.kakaopay.com/Ej79KqVcX" class="kakao_pay"></a>
                                     </div>
                                     <div>
-                                        <p class="bank">신한 <span class="account">123-123-123</span></p>
-                                        <button id="copy-account03" class="copy_account_btn" data-clipboard-text="123-123-123">
+                                        <p class="bank">신한 <span class="account">110-453-236930</span></p>
+                                        <button id="copy-account03" class="copy_account_btn" data-clipboard-text="110-453-236930">
                                             <span>복사</span>
                                             <div class="copy_popup"><span>복사되었습니다</span></div>
                                         </button>
@@ -600,7 +600,7 @@
                                 <li>
                                     <div>
                                         <p><strong>아버지</strong> 손치수</p>
-                                        <a href="" class="kakao_pay"></a>
+                                        <!-- <a href="" class="kakao_pay"></a> -->
                                     </div>
                                     <div>
                                         <p class="bank">신한 <span class="account">123-123-123</span></p>
@@ -624,8 +624,8 @@
         <div class="back"></div>
         <div class="layer_pop galleryPop">
             <div class="dim"></div>
+            <div class="close_btn" onclick="slidePopClose()">닫기</div>
             <div class="gallery_pop">
-                <div class="close_btn" onclick="slidePopClose()">닫기</div>
                 <div class="gallery_pop_slide">
                     <div class="slide_pop">
                         <ul>
