@@ -162,10 +162,12 @@
             document.querySelector(".layer_pop.galleryPop").classList.add("open");
             slidePop(myIndex);
             document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+            document.getElementsByTagName('body')[0].style.touchAction =  'pan-y';
         }
         const slidePopClose = (e) => {
             document.querySelector(".layer_pop.galleryPop").classList.remove("open");
             document.getElementsByTagName('body')[0].style.overflow = '';
+            document.getElementsByTagName('body')[0].style.touchAction =  '';
         }
         sliderItem.forEach(ele => ele.addEventListener("click", function(){slidePopOpen(this)}));
         
