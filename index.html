@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.0">
     <meta name="format-detection" content="telephone=no" />
     <title>김민성 ❤ 손지민 결혼합니다</title>
     <link rel="icon" type="image/png" sizes="16x16" href="./resource/images/heart.svg">
@@ -35,7 +35,7 @@
         font-style: normal;
     }
     :root { scroll-behavior :smooth; }
-    body {touch-action: pan-y;font-size: 4vw;line-height: 0;box-sizing: border-box;}
+    body {font-size: 4vw;line-height: 0;box-sizing: border-box;}
     body, div, img, span, p {margin:0;padding:0;font-family: 'Chosunilbo_myungjo';text-align: center;-webkit-font-smoothing: antialiased;box-sizing: border-box;}
     ul, li {list-style: none;margin:0;padding:0;}
     .flex_layout {display: flex;justify-content: center;margin-left: auto;margin-right: auto;background: #333;}
@@ -220,11 +220,19 @@
 
 .layer_pop .gallery_pop {width: 90vw;position: relative;margin: 0 auto;top: 50%;transform: translate(0, -60%);}
 .layer_pop .gallery_pop img {width: 100%;}
+
+.font-size-zoom {background: rgba(255, 255, 255, 0.8);position: fixed;right: 20px;top: 20px;z-index: 2;}
+.font-size-zoom  > div {border: 1px solid #ddd;padding: 3px;display: flex;justify-content: center;align-items: center;font-size: 1rem;}
 </style>
 <body>
     <div class="flex_layout">
         <div class="layout__">
             <div class="container">
+                <div class="font-size-zoom">
+                    <div class="plus_btn">+</div>
+                    <div class="text">글자크기</div>
+                    <div class="minus_btn">-</div>
+                </div>
                 <div class="header">
                     <div class="moving heart2"></div>
                     <div class="text">
@@ -682,27 +690,24 @@
             });
         };
 
-
         elementsArray.forEach((ele, index) => {
             if (ele.querySelectorAll(".area") !== null) ele.querySelectorAll(".area").forEach((el, index) => el.style.animationDelay = "0." + (index + 3) + "s")
         })
 
+        // document.documentElement.addEventListener('touchstart', function (event) {
+        //     if (event.touches.length > 1) {
+        //         event.preventDefault();
+        //     }
+        // }, false);
 
+        // var lastTouchEnd = 0;
 
-        document.documentElement.addEventListener('touchstart', function (event) {
-            if (event.touches.length > 1) {
-                event.preventDefault();
-            }
-        }, false);
-
-        var lastTouchEnd = 0;
-
-        document.documentElement.addEventListener('touchend', function (event) {
-            var now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            } lastTouchEnd = now;
-        }, false);
+        // document.documentElement.addEventListener('touchend', function (event) {
+        //     var now = (new Date()).getTime();
+        //     if (now - lastTouchEnd <= 300) {
+        //         event.preventDefault();
+        //     } lastTouchEnd = now;
+        // }, false);
 
 
         // 높이값
